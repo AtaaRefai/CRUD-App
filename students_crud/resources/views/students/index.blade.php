@@ -2,7 +2,6 @@
 @include('master.nav')
 <h1>All the Students</h1>
 
-<!-- will be used to show any messages -->
 @if (Session::has('message'))
     <div class="alert alert-info">{{ Session::get('message') }}</div>
 @endif
@@ -25,23 +24,19 @@
             <td>{{ $value->email }}</td>
             <td>{{ $value->student_level }}</td>
 
-            <!-- we will also add show, edit, and delete buttons -->
             <td>
 
-                <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
-                <!-- we will add this later since its a little more complicated than the other two buttons -->
 
-                <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
                 <a class="btn btn-small btn-success" href="{{ URL::to('students/' . $value->id) }}">Show this Student</a>
 
-                <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
                 <a class="btn btn-small btn-info" href="{{ URL::to('students/' . $value->id.'/edit') }}">Edit this Student</a>
                 <br><br>
-                <form action="{{ URL::to('students/' . $value->id .'/delete')}}" method='post'>
-                  {{csrf_field()}}
-                 <input type='submit' value='Delete this Student'></button>
+                 <!--deletion form -->
+                {{ Form::open(array('url' => 'students/'. $value->id .'/delete')) }}
+                  {{ Form::submit('Delete this Student', array('class' => 'btn btn-primary')) }}
+
+                {{ Form::close() }}
                 
-                </form>
             </td>
         </tr>
     @endforeach

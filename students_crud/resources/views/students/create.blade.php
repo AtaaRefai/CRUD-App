@@ -11,23 +11,33 @@
         </ul>
     </div>
 @endif
-<form action="/students" method='post'>
-  {{csrf_field()}}
-  Name:<br>
-  <input type="text" name="name" >
-  <br>
-  Email:<br>
-  <input type="text" name="email">
-  <br>
-  Level:<br>
-  <select name='student_level'>
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  </select>
-  <br><br>
-  <input type="submit" value="Create">
-</form> 
+
+{{ Form::open(array('url' => 'students')) }}
+
+    <div class="form-group">
+        {{ Form::label('name', 'Name') }}
+        {{ Form::text('name', Input::old('name'), array('class' => 'form-control')) }}
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('email', 'Email') }}
+        {{ Form::email('email', Input::old('email'), array('class' => 'form-control')) }}
+    </div>
+
+    <div class="form-group">
+        Level:<br>
+       <select name='student_level'>
+       <option value="1">1</option>
+       <option value="2">2</option>
+       <option value="3">3</option>
+       </select>
+       <br><br>
+    </div>
+
+    {{ Form::submit('Create', array('class' => 'btn btn-primary')) }}
+
+{{ Form::close() }}
+
 
 </div>
 </body>

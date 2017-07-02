@@ -10,8 +10,7 @@
     </div>
 @endif
 
-<form action="{{ URL::to('students/' . $student->id )}}" method='post'>
-  {{csrf_field()}}
+{{ Form::open(array('url' => 'students/'.$student->id)) }}
   Name:<br>
   <input type="text" name="name" placeholder='{{ $student->name }}'>
   <br>
@@ -25,8 +24,8 @@
   <option value="3">3</option>
  </select>
   <br><br>
-  <input type="submit" value="Edit">
-</form> 
+{{ Form::submit('Update Info', array('class' => 'btn btn-primary')) }}
+{{ Form::close() }}
 
 </div>
 </body>
