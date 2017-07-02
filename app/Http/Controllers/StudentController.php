@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 use App\student;
+use App\Http\Requests\StoreStudent ;
 class StudentController extends Controller
 {
     /**
@@ -38,16 +39,8 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreStudent $request)
     {
-        
-        $this->validate($request, [
-            'name'       => 'required',
-            'email'      => 'required|email',
-            'student_level' => 'required|numeric'
-    ]);
-
-         
             // store
             $student = new Student;
             $student->name = Input::get('name');
@@ -90,15 +83,8 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(StoreStudent $request,$id)
     {
-        // validate
-
-        $this->validate($request, [
-            'name'       => 'required',
-            'email'      => 'required|email',
-            'student_level' => 'required|numeric'
-    ]);
             // store
             $student =Student::find($id);  
             $student->name = Input::get('name');

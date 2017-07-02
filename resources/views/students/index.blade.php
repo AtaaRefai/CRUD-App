@@ -33,6 +33,7 @@
                 <br><br>
                  <!--deletion form -->
                 {{ Form::open(array('url' => 'students/'. $value->id .'/delete')) }}
+                {{ method_field('DELETE') }}
                   {{ Form::submit('Delete this Student', array('class' => 'btn btn-primary')) }}
 
                 {{ Form::close() }}
