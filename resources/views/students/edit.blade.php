@@ -10,8 +10,8 @@
     </div>
 @endif
 
-{{ Form::open(array('url' => 'students/'.$student->id)) }}
-{{ method_field('PATCH') }}
+{{ Form::open(array('url' => 'students/'.$student->id,'method'=>'PATCH')) }}
+
   Name:<br>
   <input type="text" name="name" placeholder='{{ $student->name }}'>
   <br>

@@ -32,9 +32,8 @@
                 <a class="btn btn-small btn-info" href="{{ URL::to('students/' . $value->id.'/edit') }}">Edit this Student</a>
                 <br><br>
                  <!--deletion form -->
-                {{ Form::open(array('url' => 'students/'. $value->id .'/delete')) }}
-                {{ method_field('DELETE') }}
-                  {{ Form::submit('Delete this Student', array('class' => 'btn btn-primary')) }}
+                {{ Form::open(array('url' => 'students/'. $value->id .'/delete','method' => 'DELETE')) }}
+                {{ Form::submit('Delete this Student', array('class' => 'btn btn-primary')) }}
 
                 {{ Form::close() }}
                 
