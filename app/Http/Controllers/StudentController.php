@@ -107,10 +107,16 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        $student = Student::find($id);
+       if($student = Student::find($id)) {
         $student->delete();
-
         // redirect
         return Redirect::to('students');
+       }
+       else {
+        Session::flash('message', 'Student does not exist!');
+        return Redirect::to('students');
+       }  
+        
     }
-}
+    
+}//class
